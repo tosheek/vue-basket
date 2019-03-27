@@ -18,7 +18,7 @@
           <div id="total">Сумма</div>
         </div>
         <buyitem v-for="buyitem in buyitems" v-bind:buy_data="buyitem"></buyitem>
-        <h5 v-if="total()">Итого: {{total()}} р.</h5>
+        <h5 v-if="total()">Итого: {{total()}} р. {{totalqty()}} шт</h5>
       </div>
     </div>
     

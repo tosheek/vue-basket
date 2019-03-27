@@ -114,6 +114,14 @@ var app = new Vue({
     buyitems: []
   },
   methods: {
+    totalqty: function(){
+      var qty = 0;
+      this.buyitems.forEach(function(buyitem){
+            //qty++;
+             qty += parseInt(buyitem.qty);
+      });
+      return qty;      
+    },
     total: function(){
       var sum = 0;
       this.buyitems.forEach(function(buyitem){

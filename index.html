@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Корзина</title>
+  <script src="https://unpkg.com/vue"></script>
+  <link href="./style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div id="app">
+      <div id="product">
+        <item v-for="item in items" v-bind:item_data="item"></item>
+      </div>
+      <div id="cart">
+        <div id="head">
+          <h3>Корзина</h3>
+          <div id="price">Цена</div>
+          <div id="quantity">Количество</div>
+          <div id="total">Сумма</div>
+        </div>
+        <buyitem v-for="buyitem in buyitems" v-bind:buy_data="buyitem"></buyitem>
+        <h5 v-if="total()">Итого: {{total()}} р.</h5>
+      </div>
+    </div>
+    
+    
+    <template id="product-box">
+      <div class="box">
+        <img :src="item_data.img"/>
+        <i class="fa fa-plus" v-on:click="addItem(item_data)">+</i>
+        <h2>{{item_data.title}}</h2>
+        <p>{{item_data.price}} р.</p>
+      </div>
+    </template>
+    
+    <template id="buy-box">
+      <div class="row">
+        <img :src="buy_data.img"/>
+        <h4>{{buy_data.title}}</h4>
+        <p>{{buy_data.price}} р.</p>
+        <div class="qty-minus" v-on:click="minusQty(buy_data)">-</div>
+        <div class="qty">{{buy_data.qty}}</div>
+        <div class="qty-plus" v-on:click="plusQty(buy_data)">+</div>
+        <div class="del" v-on:click="removeItem(buy_data)">Удалить</div>
+        <div class="totalprice">{{buy_data.total}} р.</div>
+      </div>
+    </template>
+
+<script src="./app.js"></script>
+</body>
+</html>

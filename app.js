@@ -7,36 +7,15 @@ Vue.component("item", {
   props: ["item_data", "buyitems"],
   methods: {
     addItem: function(item_data) {
-      if (item_data.id == "beer") {
-        beerClick += 1;
-        if (beerClick <= 1) {
-          this.pushData();
-        } else {
-          var i = this.findIndex(this.$parent.buyitems, "id", "beer");
-          this.$parent.buyitems[i].qty += 1;
-          this.$parent.buyitems[i].total = this.$parent.buyitems[i].qty*this.$parent.buyitems[i].price;
-          console.log(i);
-        }
-      } else if (item_data.id == "eco-bag") {
-        ecoClick += 1;
-        if (ecoClick <= 1) {
-          this.pushData();
-        } else {
-          var i = this.findIndex(this.$parent.buyitems, "id", "eco-bag");
-          this.$parent.buyitems[i].qty += 1;
-          this.$parent.buyitems[i].total =this.$parent.buyitems[i].qty*this.$parent.buyitems[i].price;
-        }
-      } else {
-        paperClick += 1;
-        if (paperClick <= 1) {
-          this.pushData();
-        } else {
-          var i = this.findIndex(this.$parent.buyitems, "id", "paper-bag");
-          this.$parent.buyitems[i].qty += 1;
-          this.$parent.buyitems[i].total = this.$parent.buyitems[i].qty*this.$parent.buyitems[i].price;
-        }
-      }
-      console.log(beerClick, ecoClick, paperClick);
+      var exists_id_index = this.findIndex(this.$parent.buyitems, "id", item_data.id);
+      if (exists_id_index < 0) {
+          this.pushData();        
+      }else{
+          this.$parent.buyitems[exists_id_index].qty += 1;
+          this.$parent.buyitems[exists_id_index].total =this.$parent.buyitems[exists_id_index].qty*this.$parent.buyitems[exists_id_index].price;
+      }       
+      
+      
     },
     pushData: function() {
       this.$parent.buyitems.push({
@@ -65,13 +44,6 @@ Vue.component("buyitem", {
     removeItem: function(buy_data) {
       var index = this.$parent.buyitems.indexOf(buy_data);
       this.$parent.buyitems.splice(index, 1);
-      if (buy_data.id == "beer") {
-        beerClick = 0;
-      } else if (buy_data.id == "eco-bag") {
-        ecoClick = 0;
-      } else {
-        paperClick = 0;
-      }
     },
     plusQty: function(buy_data){
       buy_data.qty += 1;

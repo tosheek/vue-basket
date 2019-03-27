@@ -7,7 +7,7 @@
 </head>
 <body>
     <div id="app">
-      <div id="product">
+      <div class="products">
         <item v-for="item in items" v-bind:item_data="item"></item>
       </div>
       <div id="cart">
@@ -18,13 +18,13 @@
           <div id="total">Сумма</div>
         </div>
         <buyitem v-for="buyitem in buyitems" v-bind:buy_data="buyitem"></buyitem>
-        <h5 v-if="total()">Итого: {{total()}} р. {{totalqty()}} шт</h5>
+        <h5 v-if="total()">Итого: {{total()}} р. {{totalQty()}} шт</h5>
       </div>
     </div>
     
     
     <template id="product-box">
-      <div class="box">
+      <div class="box" :id="item_data.id">
         <img :src="item_data.img"/>
         <i class="fa fa-plus" v-on:click="addItem(item_data)">+</i>
         <h2>{{item_data.title}}</h2>

@@ -1,21 +1,15 @@
-var beerClick = 0;
-var ecoClick = 0;
-var paperClick = 0;
-
 Vue.component("item", {
   template: "#product-box",
   props: ["item_data", "buyitems"],
   methods: {
     addItem: function(item_data) {
-      var exists_id_index = this.findIndex(this.$parent.buyitems, "id", item_data.id);
-      if (exists_id_index < 0) {
+      var i = this.findIndex(this.$parent.buyitems, "id", item_data.id);
+      if (i < 0) {
           this.pushData();        
       }else{
-          this.$parent.buyitems[exists_id_index].qty += 1;
-          this.$parent.buyitems[exists_id_index].total =this.$parent.buyitems[exists_id_index].qty*this.$parent.buyitems[exists_id_index].price;
-      }       
-      
-      
+          this.$parent.buyitems[i].qty += 1;
+          this.$parent.buyitems[i].total =this.$parent.buyitems[i].qty*this.$parent.buyitems[i].price;
+      }
     },
     pushData: function() {
       this.$parent.buyitems.push({
@@ -37,6 +31,7 @@ Vue.component("item", {
     },
   }
 });
+
 Vue.component("buyitem", {
   template: "#buy-box",
   props: ["buy_data", "buyitems"],
@@ -48,6 +43,7 @@ Vue.component("buyitem", {
     plusQty: function(buy_data){
       buy_data.qty += 1;
       buy_data.total = buy_data.qty*buy_data.price;
+
     },
     minusQty: function(buy_data){
       buy_data.qty -= 1;
@@ -55,6 +51,9 @@ Vue.component("buyitem", {
         buy_data.qty = 0;
       }
       buy_data.total = buy_data.qty*buy_data.price;
+
+      if (buy_data.qty == 0) 
+        this.removeItem(buy_data);
     }
     
   }
@@ -65,28 +64,19 @@ var app = new Vue({
   data: {
     items: [
       {
-        img: "https://chenyiya.com/codepen/product-1.jpg",
-        title: "Beer Bottle",
-        price: "25",
-        id: "beer"
+        img: "https://chenyiya.com/codepen/product-1.jpg",title: "Beer Bottle",price: "25",id: "beer"
       },
       {
-        img: "https://chenyiya.com/codepen/product-2.jpg",
-        title: "Eco Bag",
-        price: "73",
-        id: "eco-bag"
+        img: "https://chenyiya.com/codepen/product-2.jpg",title: "Eco Bag",price: "73",id: "eco-bag"
       },
       {
-        img: "https://chenyiya.com/codepen/product-3.jpg",
-        title: "Paper Bag",
-        price: "35",
-        id: "paper-bag"
+        img: "https://chenyiya.com/codepen/product-3.jpg",title: "Paper Bag",price: "35",id: "paper-bag"
       }
     ],
     buyitems: []
   },
   methods: {
-    totalqty: function(){
+    totalQty: function(){
       var qty = 0;
       this.buyitems.forEach(function(buyitem){
             //qty++;

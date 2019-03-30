@@ -100,13 +100,12 @@ var app = new Vue({
       const parsed = JSON.stringify(this.basket_items);
       localStorage.setItem('basket_items', parsed);
     },
-
-    totalQty: function(){
-      var qty = 0;
+    counter: function() {
+      let counter = 0;
       this.basket_items.forEach(function(basket_item){
-          qty += parseInt(basket_item.qty);
+             counter += parseInt(basket_item.qty);
       });
-      return qty;      
+      return counter;      
     },
     getTotal: function(){
       var sum = 0;

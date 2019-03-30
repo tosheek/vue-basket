@@ -24,7 +24,7 @@
         </div>
         
         <basket_item v-for="basket_item in basket_items" v-bind:buy_data="basket_item"></basket_item>
-        <h5 v-if="getTotal()">Итого: {{getTotal()}} р. {{totalQty()}} шт</h5>
+        <h5 v-if="getTotal()">Итого: {{getTotal()}} р. {{ counter() }} шт</h5>
         <h5 v-else>Корзина пустая</h5>
       </div>
 

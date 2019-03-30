@@ -10,9 +10,11 @@
 </head>
 <body>
     <div id="app">
+      
       <div class="products">
         <item v-for="item in items" v-bind:product_data="item"></item>
       </div>
+      
       <div class="cart">
         <div class="cart__head">
           <h3>Корзина</h3>
@@ -20,14 +22,16 @@
           <div class="cart__head--quantity">Количество</div>
           <div class="cart__head--total">Сумма</div>
         </div>
+        
         <basket_item v-for="basket_item in basket_items" v-bind:buy_data="basket_item"></basket_item>
         <h5 v-if="getTotal()">Итого: {{getTotal()}} р. {{totalQty()}} шт</h5>
         <h5 v-else>Корзина пустая</h5>
       </div>
+
     </div>
     
     
-    <template id="item-box">
+    <template id="item-template">
       <div class="box" v-bind:id="product_data.id">
         <img :src="product_data.img"/>
         <i class="fa fa-plus" v-on:click="addItem(product_data)">+</i>
@@ -36,7 +40,7 @@
       </div>
     </template>
     
-    <template id="buy-box">
+    <template id="basket-item-template">
       <div class="row">
         <img v-bind:src="buy_data.img"/>
         <h4>{{buy_data.title}}</h4>

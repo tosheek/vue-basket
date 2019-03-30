@@ -1,5 +1,5 @@
 Vue.component("item", {
-  template: "#item-box",
+  template: "#item-template",
   props: ["product_data", "basket_items"],
   methods: {
     addItem: function(product_data) {
@@ -34,7 +34,7 @@ Vue.component("item", {
 });
 
 Vue.component("basket_item", {
-  template: "#buy-box",
+  template: "#basket-item-template",
   props: ["buy_data", "basket_items"],
   methods: {
     removeItem: function(buy_data) {
@@ -89,12 +89,7 @@ var app = new Vue({
         localStorage.removeItem('basket_items');
       }
     }
-  },
-  // watch:{
-  //   basket_items: function (val) {
-  //     this.save();
-  //   }
-  // }, 
+  }, 
   methods: {
     save() {
       const parsed = JSON.stringify(this.basket_items);

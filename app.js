@@ -93,23 +93,19 @@ var app = new Vue({
   computed: {
     total(){
       let sum = 0;
+      let count = 0;
       this.basket_items.forEach((basket_item) => {
           sum += parseInt(basket_item.total);
+          count += parseInt(basket_item.qty);
       });
-      return sum;
+      return {sum,count};
     }
+
   },
   methods: {
     save() {
       const parsed = JSON.stringify(this.basket_items);
       localStorage.setItem('basket_items', parsed);
-    },
-    counter() {
-      let counter = 0;
-      this.basket_items.forEach((basket_item) => {
-             counter += parseInt(basket_item.qty);
-      });
-      return counter;      
     }
   }
 });

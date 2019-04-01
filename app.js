@@ -89,7 +89,16 @@ var app = new Vue({
         localStorage.removeItem('basket_items');
       }
     }
-  }, 
+  },
+  computed: {
+    total(){
+      let sum = 0;
+      this.basket_items.forEach((basket_item) => {
+          sum += parseInt(basket_item.total);
+      });
+      return sum;
+    }
+  },
   methods: {
     save() {
       const parsed = JSON.stringify(this.basket_items);
@@ -101,13 +110,6 @@ var app = new Vue({
              counter += parseInt(basket_item.qty);
       });
       return counter;      
-    },
-    getTotal(){
-      var sum = 0;
-      this.basket_items.forEach((basket_item) => {
-          sum += parseInt(basket_item.total);
-      });
-      return sum;
     }
   }
 });

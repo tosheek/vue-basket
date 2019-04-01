@@ -12,7 +12,12 @@
     <div id="app">
       
       <div class="products">
-        <item v-for="item in items" v-bind:product_data="item"></item>
+        <div id="beer" class="box">
+            <img src="https://chenyiya.com/codepen/product-1.jpg"> 
+            <i class="fa fa-plus" v-on:click="addItem({img: 'https://chenyiya.com/codepen/product-1.jpg',title: 'Beer Bottle',price: '25',id: 'beer'})">+</i> 
+            <h2>Beer Bottle</h2> 
+            <p>25 р.</p>
+        </div>
       </div>
       
       <div class="cart">
@@ -29,16 +34,6 @@
       </div>
 
     </div>
-    
-    
-    <template id="item-template">
-      <div class="box" v-bind:id="product_data.id">
-        <img :src="product_data.img"/>
-        <i class="fa fa-plus" v-on:click="addItem(product_data)">+</i>
-        <h2>{{product_data.title}}</h2>
-        <p>{{product_data.price}} р.</p>
-      </div>
-    </template>
     
     <template id="basket-item-template">
       <div class="row">

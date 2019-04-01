@@ -1,38 +1,3 @@
-Vue.component("item", {
-  template: "#item-template",
-  props: ["product_data", "basket_items"],
-  methods: {
-    addItem(product_data) {
-      var i = this.findIndex(this.$parent.basket_items, "id", product_data.id);
-      if (i < 0) {
-          this.pushData();        
-      }else{
-          this.$parent.basket_items[i].qty += 1;
-          this.$parent.basket_items[i].total =this.$parent.basket_items[i].qty*this.$parent.basket_items[i].price;
-      }
-      this.$parent.save();
-    },
-    pushData() {
-      this.$parent.basket_items.push({
-        img: this.product_data.img,
-        title: this.product_data.title,
-        price: this.product_data.price,
-        qty: 1,
-        total: this.product_data.price,
-        id: this.product_data.id
-      });
-    },
-    findIndex(array, attr, value) {
-      for (var i = 0; i < array.length; i += 1) {
-        if (array[i][attr] === value) {
-          return i;
-        }
-      }
-      return -1;
-    },
-  }
-});
-
 Vue.component("basket_item", {
   template: "#basket-item-template",
   props: ["buy_data", "basket_items"],
@@ -103,6 +68,31 @@ var app = new Vue({
 
   },
   methods: {
+   addItem(product_data) {
+      var i = this.findIndex(this.basket_items, "id", product_data.id);
+      if (i < 0) {
+        this.basket_items.push({
+          img: product_data.img,
+          title: product_data.title,
+          price: product_data.price,
+          qty: 1,
+          total: product_data.price,
+          id: product_data.id
+        });
+      }else{
+          this.basket_items[i].qty += 1;
+          this.basket_items[i].total =this.basket_items[i].qty*this.basket_items[i].price;
+      }
+      this.save();
+    },
+    findIndex(array, attr, value) {
+      for (var i = 0; i < array.length; i += 1) {
+        if (array[i][attr] === value) {
+          return i;
+        }
+      }
+      return -1;
+    },    
     save() {
       const parsed = JSON.stringify(this.basket_items);
       localStorage.setItem('basket_items', parsed);

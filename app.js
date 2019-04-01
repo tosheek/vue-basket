@@ -2,7 +2,7 @@ Vue.component("item", {
   template: "#item-template",
   props: ["product_data", "basket_items"],
   methods: {
-    addItem: function(product_data) {
+    addItem(product_data) {
       var i = this.findIndex(this.$parent.basket_items, "id", product_data.id);
       if (i < 0) {
           this.pushData();        
@@ -12,7 +12,7 @@ Vue.component("item", {
       }
       this.$parent.save();
     },
-    pushData: function() {
+    pushData() {
       this.$parent.basket_items.push({
         img: this.product_data.img,
         title: this.product_data.title,
@@ -22,7 +22,7 @@ Vue.component("item", {
         id: this.product_data.id
       });
     },
-    findIndex: function(array, attr, value) {
+    findIndex(array, attr, value) {
       for (var i = 0; i < array.length; i += 1) {
         if (array[i][attr] === value) {
           return i;
@@ -37,19 +37,19 @@ Vue.component("basket_item", {
   template: "#basket-item-template",
   props: ["buy_data", "basket_items"],
   methods: {
-    removeItem: function(buy_data) {
+    removeItem(buy_data) {
       var index = this.$parent.basket_items.indexOf(buy_data);
       this.$parent.basket_items.splice(index, 1);
       
       this.$parent.save();
     },
-    plusQty: function(buy_data){
+    plusQty(buy_data){
       buy_data.qty += 1;
       buy_data.total = buy_data.qty*buy_data.price;
      
       this.$parent.save();
     },
-    minusQty: function(buy_data){
+    minusQty(buy_data){
       buy_data.qty -= 1;
       if (buy_data.qty < 0){
         buy_data.qty = 0;
@@ -95,16 +95,16 @@ var app = new Vue({
       const parsed = JSON.stringify(this.basket_items);
       localStorage.setItem('basket_items', parsed);
     },
-    counter: function() {
+    counter() {
       let counter = 0;
-      this.basket_items.forEach(function(basket_item){
+      this.basket_items.forEach((basket_item) => {
              counter += parseInt(basket_item.qty);
       });
       return counter;      
     },
-    getTotal: function(){
+    getTotal(){
       var sum = 0;
-      this.basket_items.forEach(function(basket_item){
+      this.basket_items.forEach((basket_item) => {
           sum += parseInt(basket_item.total);
       });
       return sum;

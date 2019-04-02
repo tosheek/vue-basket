@@ -44,10 +44,10 @@ html, body {
       }
     }
   }
-  .basket {
+  .cart {
     margin-top: 50px;
     overflow: hidden;
-    .basket__head {
+    .cart__head {
       width: 100%;
       border-bottom: 1px solid #BFBFBF;
       height: 40px;
@@ -57,26 +57,26 @@ html, body {
         line-height: 40px;
         margin: 0;
       }
-      .basket__head--price {
+      .cart__head--price {
         display: inline-block;
         color: #777777;
         margin-left: 200px;
         line-height: 40px;
       }
-      .basket__head--quantity {
+      .cart__head--quantity {
         display: inline-block;
         color: #777777;
         margin-left: 100px;
         line-height: 40px;
       }
-      .basket__head--total {
+      .cart__head--total {
         display: inline-block;
         color: #777777;
         line-height: 40px;
         float: right;
       }
     }
-    .basket_row {
+    .row {
       width: 100%;
       border-bottom: 1px solid #BFBFBF;
       overflow: hidden;

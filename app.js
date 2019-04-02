@@ -33,6 +33,17 @@ Vue.component("basket_item", {
 var app = new Vue({
   el: "#app",
   data: {
+    items: [
+      {
+        img: "https://chenyiya.com/codepen/product-1.jpg",title: "Beer Bottle",price: "25",id: "beer"
+      },
+      {
+        img: "https://chenyiya.com/codepen/product-2.jpg",title: "Eco Bag",price: "73",id: "eco-bag"
+      },
+      {
+        img: "https://chenyiya.com/codepen/product-3.jpg",title: "Paper Bag",price: "35",id: "paper-bag"
+      }
+    ],
     basket_items: []
   },
   mounted() {

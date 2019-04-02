@@ -35,77 +35,77 @@ html, body {
       margin-left: 20px; }
     #app .products .box p {
       margin-left: 20px; }
-  #app .cart {
+  #app .basket {
     margin-top: 50px;
     overflow: hidden; }
-    #app .cart .cart__head {
+    #app .basket .basket__head {
       width: 100%;
       border-bottom: 1px solid #BFBFBF;
       height: 40px;
       display: block; }
-      #app .cart .cart__head h3 {
+      #app .basket .basket__head h3 {
         display: inline-block;
         line-height: 40px;
         margin: 0; }
-      #app .cart .cart__head .cart__head--price {
+      #app .basket .basket__head .basket__head--price {
         display: inline-block;
         color: #777777;
         margin-left: 200px;
         line-height: 40px; }
-      #app .cart .cart__head .cart__head--quantity {
+      #app .basket .basket__head .basket__head--quantity {
         display: inline-block;
         color: #777777;
         margin-left: 100px;
         line-height: 40px; }
-      #app .cart .cart__head .cart__head--total {
+      #app .basket .basket__head .basket__head--total {
         display: inline-block;
         color: #777777;
         line-height: 40px;
         float: right; }
-    #app .cart .row {
+    #app .basket .basket_row {
       width: 100%;
       border-bottom: 1px solid #BFBFBF;
       overflow: hidden;
       padding: 10px 0;
       display: block;
       flaot: left; }
-      #app .cart .row img {
+      #app .basket .basket_row img {
         height: 100px;
         float: left; }
-      #app .cart .row h4 {
+      #app .basket .basket_row h4 {
         float: left;
         margin: 0;
         line-height: 100px;
         margin-left: 20px;
         width: 100px; }
-      #app .cart .row p {
+      #app .basket .basket_row p {
         float: left;
         margin: 0;
         width: 80px;
         line-height: 100px;
         margin-left: 35px;
         text-align: center; }
-      #app .cart .row .qty-minus {
+      #app .basket .basket_row .qty-minus {
         float: left;
         width: 20px;
         line-height: 100px;
         margin-left: 60px;
         text-align: center;
         cursor: pointer; }
-      #app .cart .row .qty {
+      #app .basket .basket_row .qty {
         float: left;
         width: 20px;
         line-height: 100px;
         margin-left: 20px;
         text-align: center; }
-      #app .cart .row .qty-plus {
+      #app .basket .basket_row .qty-plus {
         float: left;
         width: 20px;
         line-height: 100px;
         margin-left: 20px;
         text-align: center;
         cursor: pointer; }
-      #app .cart .row .del {
+      #app .basket .basket_row .del {
         float: left;
         width: 80px;
         line-height: 100px;
@@ -113,12 +113,12 @@ html, body {
         cursor: pointer;
         text-decoration: underline;
         color: #ED277F; }
-      #app .cart .row .totalprice {
+      #app .basket .basket_row .totalprice {
         float: left;
         width: 80px;
         line-height: 100px;
         margin-left: 10px;
         text-align: right; }
-    #app .cart h5 {
+    #app .basket h5 {
       font-size: 1.2rem;
       text-align: right; }
